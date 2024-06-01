@@ -1,0 +1,31 @@
+[project]
+name = "meta_gather"
+version = "0.1.0"
+description = "A cross-platform, environment metadata collection library in Rust with bindings for multiple high-level programming languages."
+authors = [
+    { name = "Jonathan Harper", email = "39912347+jharper-sec@users.noreply.github.com" },
+]
+dependencies = ["maturin==1.5.1"]
+readme = "README.md"
+requires-python = ">= 3.8"
+classifiers = [
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+]
+
+[build-system]
+requires = ["maturin==1.5.1"]
+build-backend = "maturin"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "pip>=24.0",
+]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/meta_gather"]
