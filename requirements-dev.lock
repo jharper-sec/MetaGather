@@ -8,8 +8,29 @@
 #   with-sources: false
 
 -e file:.
+exceptiongroup==1.2.1
+    # via pytest
+iniconfig==2.0.0
+    # via pytest
 maturin==1.5.1
     # via meta-gather
+mypy==1.10.0
+mypy-extensions==1.0.0
+    # via mypy
+nodeenv==1.9.0
+    # via pyright
+packaging==24.0
+    # via pytest
 pip==24.0
+pluggy==1.5.0
+    # via pytest
+pyright==1.1.365
+pytest==8.2.1
+ruff==0.4.7
+setuptools==70.0.0
 tomli==2.0.1
     # via maturin
+    # via mypy
+    # via pytest
+typing-extensions==4.12.1
+    # via mypy

@@ -22,10 +22,82 @@ build-backend = "maturin"
 managed = true
 dev-dependencies = [
     "pip>=24.0",
+    "pyright>=1.1.365",
+    "mypy>=1.10.0",
+    "pytest>=8.2.1",
+    "ruff>=0.4.7",
+    "setuptools>=70.0.0",
 ]
 
-[tool.hatch.metadata]
-allow-direct-references = true
+[tool.mypy]
+# https://mypy.readthedocs.io/en/stable/config_file.html
+mypy_path = "bindings/python/pyi"
+python_version = "3.8"
+disallow_untyped_defs = true
+disallow_any_unimported = true
+no_implicit_optional = true
+check_untyped_defs = true
+warn_return_any = true
+warn_unused_ignores = true
+show_error_codes = true
+strict = true
 
-[tool.hatch.build.targets.wheel]
-packages = ["src/meta_gather"]
+[tool.ruff]
+# https://docs.astral.sh/ruff/configuration/
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+]
+
+line-length = 120
+indent-width = 4
+target-version = "py38"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
+ignore = []
+fixable = ["ALL"]
+unfixable = []
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+docstring-code-format = false
+docstring-code-line-length = "dynamic"
+
+[tool.pyright]
+typeCheckingMode = "strict"
+pythonVersion = "3.8"
+
+include = ["bindings/python"]
+exclude = [".venv"]
+
+stubPath = "bindings/python/pyi"

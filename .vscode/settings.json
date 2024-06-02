@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "./bindings/python/pyi"
+    ],
+    "python.analysis.stubPath": "./bindings/python/pyi"
+}
