@@ -1,16 +1,14 @@
 use pyo3::prelude::*;
 
-/// Formats the sum of two numbers as string.
+/// Prints a message.
 #[pyfunction]
-fn sum_as_string(a: usize, b: usize) -> PyResult<String> {
-    Ok((a + b).to_string())
+fn hello() -> PyResult<String> {
+    Ok("Hello from meta-gather!".into())
 }
 
-/// A Python module implemented in Rust. The name of this function must match
-/// the `lib.name` setting in the `Cargo.toml`, else Python will not be able to
-/// import the module.
+/// A Python module implemented in Rust.
 #[pymodule]
-fn meta_gather(m: &Bound<'_, PyModule>) -> PyResult<()> {
-    m.add_function(wrap_pyfunction!(sum_as_string, m)?)?;
+fn meta_gather(_py: Python, m: &Bound<'_, PyModule>) -> PyResult<()> {
+    m.add_function(wrap_pyfunction!(hello, m)?)?;
     Ok(())
 }

@@ -21,13 +21,18 @@ build-backend = "maturin"
 [tool.rye]
 managed = true
 dev-dependencies = [
-    "pip>=24.0",
-    "pyright>=1.1.365",
-    "mypy>=1.10.0",
-    "pytest>=8.2.1",
-    "ruff>=0.4.7",
-    "setuptools>=70.0.0",
+    "pip==24.0",
+    "pyright==1.1.365",
+    "mypy==1.10.0",
+    "pytest==8.2.1",
+    "ruff==0.4.7",
+    "setuptools==70.0.0",
 ]
+
+[tool.maturin]
+python-source = "python"
+module-name = "meta_gather"
+features = ["pyo3/extension-module"]
 
 [tool.mypy]
 # https://mypy.readthedocs.io/en/stable/config_file.html
